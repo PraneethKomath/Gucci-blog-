@@ -44,11 +44,9 @@
 
 <body>
 
-
   <header>
-    
     <nav class="nav-root brutal-nav">
-        <div class="brutal-logo ms-4">
+        <div class="brutal-logo ms-5">
             <img src="assets/img/56722497-957b-4d7f-8ee1-811e8cdf781e.jpg" alt="" style="height: 70px; width: 150px;">
         </div>
         
@@ -59,14 +57,14 @@
             <a href="#news" class="brutal-link">News</a>
         </div>
         
-        <div class="brutal-actions me-4">
+        <div class="brutal-actions me-5 ">
             <button class="brutal-shop">SHOP NOW</button>
         </div>
         
         <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
         </button>
     </nav>
 </header>
@@ -430,10 +428,10 @@
 
 
 <script>
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    const navActions = document.getElementById('navActions');
+    const navActions = document.querySelector('.brutal-actions');
     const navItems = document.querySelectorAll('.brutal-link');
     
     // Mobile menu toggle
@@ -465,9 +463,9 @@
                 this.classList.add('active');
                 
                 // Smooth scroll to section
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
                 });
             }
         });
@@ -475,12 +473,12 @@
     
     // Highlight active section while scrolling
     window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY;
+        const scrollPosition = window.scrollY + 100; // Adding offset for sticky nav
         
         navItems.forEach(link => {
             const section = document.querySelector(link.getAttribute('href'));
             if (section) {
-                const sectionTop = section.offsetTop - 100;
+                const sectionTop = section.offsetTop;
                 const sectionBottom = sectionTop + section.offsetHeight;
                 
                 if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {

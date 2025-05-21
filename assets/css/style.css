@@ -1000,47 +1000,53 @@ select {
 }
 /* header start */
 /* Base Nav Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Sticky Navigation */
 .brutal-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     background-color: #000;
-    position: sticky !important;
+    position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    width: 100%;
 }
 
 /* Logo */
 .brutal-logo {
-    font-family: 'Courier New', monospace;
-    font-weight: 900;
-    font-size: 2rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 10;
+    z-index: 1010;
 }
 
-/* Nav Links Container */
+.ms-4 {
+    margin-left: 1.5rem;
+}
+.me-4 {
+    margin-right: 1.5rem;
+}
+
+/* Navigation Links */
 .brutal-links {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
 }
 
-/* Individual Links */
 .brutal-link {
-    color: #fff !important;
-    text-decoration: none !important;
+    color: #fff;
+    text-decoration: none;
     font-weight: 700;
     font-size: 1.1rem;
     position: relative;
     padding: 5px 0;
-    transition: none !important;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-/* Hover Underline Effect */
 .brutal-link::after {
     content: '';
     position: absolute;
@@ -1056,21 +1062,18 @@ select {
     width: 100%;
 }
 
-/* Active Link Style */
 .brutal-link.active {
-    color: #017ac4 !important;
+    color: #017ac4;
 }
 
 .brutal-link.active::after {
     width: 100%;
-    background: #017ac4;
 }
 
 /* Button Styles */
 .brutal-actions {
     display: flex;
     align-items: center;
-    gap: 2rem;
 }
 
 .brutal-shop {
@@ -1090,17 +1093,18 @@ select {
     color: #017ac4;
 }
 
-/* Hamburger Menu - Hidden by default */
+/* Hamburger Menu */
 .hamburger {
     display: none;
-    cursor: pointer;
     background: none;
     border: none;
     padding: 10px;
-    z-index: 10;
+    cursor: pointer;
+    z-index: 1010;
+    margin-right: 1.5rem;
 }
 
-.hamburger span {
+.hamburger-line {
     display: block;
     width: 30px;
     height: 3px;
@@ -1133,8 +1137,7 @@ select {
         align-items: center;
         gap: 2rem;
         transition: right 0.3s ease-in-out;
-        z-index: 5;
-        padding: 2rem;
+        z-index: 1000;
     }
     
     .brutal-links.active {
@@ -1146,51 +1149,38 @@ select {
         bottom: 2rem;
         right: -100%;
         width: 70%;
-        display: flex;
         justify-content: center;
         transition: right 0.3s ease-in-out 0.1s;
-        z-index: 5;
     }
     
-    .brutal-links.active ~ .brutal-actions {
+    .brutal-links.active + .brutal-actions {
         right: 0;
     }
     
-    /* Animate hamburger to X when active */
-    .hamburger.active span:nth-child(1) {
+    /* Hamburger animation */
+    .hamburger.active .hamburger-line:nth-child(1) {
         transform: rotate(-45deg) translate(-6px, 6px);
     }
     
-    .hamburger.active span:nth-child(2) {
+    .hamburger.active .hamburger-line:nth-child(2) {
         opacity: 0;
     }
     
-    .hamburger.active span:nth-child(3) {
+    .hamburger.active .hamburger-line:nth-child(3) {
         transform: rotate(45deg) translate(-6px, -6px);
     }
 }
 
 @media (max-width: 480px) {
-    .brutal-nav {
-        padding: 1rem;
-    }
-    
     .brutal-logo img {
-        height: 50px;
+        height: 60px;
+        width: 130px;
     }
     
-    .brutal-links {
-        width: 80%;
-    }
-    
+    .brutal-links,
     .brutal-actions {
         width: 80%;
     }
-}
-
-/* Smooth scrolling for the whole page */
-html {
-    scroll-behavior: smooth;
 }
 /* header end */
 
